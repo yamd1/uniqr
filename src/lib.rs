@@ -47,12 +47,12 @@ pub fn get_args() -> MyResult<Config> {
         .get_matches();
 
     let in_file = matches.get_one::<String>("in_file").unwrap().to_owned();
-
+    let out_file = matches.get_one::<String>("out_file").to_owned().cloned();
     let count = matches.get_flag("count");
 
     Ok(Config {
         in_file,
-        out_file: Some("bar".to_string()),
+        out_file,
         count,
     })
 }
